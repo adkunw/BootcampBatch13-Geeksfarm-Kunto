@@ -2,7 +2,7 @@
 ### **Materi: Node.js & React.js**  
 
 Selamat datang di repository ini! 🎉  
-Repository ini berisi materi, contoh kode, dan proyek yang digunakan dalam **Bootcamp Batch 13 Geeksfarm** dengan fokus pada **pengembangan aplikasi web fullstack menggunakan Node.js dan React.js**.  
+Repository ini berisi contoh kode, dan proyek yang digunakan dalam **Bootcamp Batch 13 Geeksfarm** dengan fokus pada **pengembangan aplikasi web fullstack menggunakan Node.js dan React.js**.  
 
 ## **📌 Teknologi yang Dipelajari**  
 - **Backend:** Node.js dengan Express.js  
