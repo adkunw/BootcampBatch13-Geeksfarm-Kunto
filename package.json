@@ -1,0 +1,16 @@
+{
+  "name": "bootcampbatch13-geeksfarm-kunto",
+  "version": "1.0.0",
+  "description": "learn NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "fol": "ls",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aditya Kunto",
+  "license": "ISC",
+  "dependencies": {
+    "validator": "^13.12.0"
+  }
+}
