@@ -1,17 +1,12 @@
 [
     {
         "name": "kunto",
-        "phone": "0813123123",
+        "phone": "08123123123",
         "email": "qwe@asd.com"
     },
     {
-        "name": "kuntos",
+        "name": "Kunto",
         "phone": "08123123123",
-        "email": "asd@zxc.com"
-    },
-    {
-        "name": "aditya",
-        "phone": "081412312312",
-        "email": "ss@asd.com"
+        "email": "asd@qwe.com"
     }
 ]

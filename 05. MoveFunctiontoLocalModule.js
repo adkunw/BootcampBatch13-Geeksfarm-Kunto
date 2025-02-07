@@ -1,3 +1,32 @@
+/**
+ * ======================================================
+ * Contact Management System Using Node.js (Async Version)
+ * ======================================================
+ *
+ * This script collects user contact details (name, phone, and email)
+ * and saves them into a JSON file (`contacts.json`). It utilizes
+ * asynchronous operations for better handling of user input.
+ *
+ * The program follows these steps:
+ * 1. Imports required modules:
+ *    - `func` for custom functions (handling user input and saving data).
+ *    - `validator` for input validation (checking phone number and email formats).
+ * 2. Asks the user for their name using an asynchronous prompt.
+ * 3. Continuously asks for a valid phone number until the user provides a correct input.
+ * 4. Continuously asks for a valid email until the user provides a correct input.
+ * 5. Stores the collected data into `contacts.json` in a structured format.
+ * 6. Closes the input stream once all data has been collected.
+ * 7. Displays a success message upon saving the contact information.
+ *
+ * Features:
+ * - Uses asynchronous input handling for a smoother command-line experience.
+ * - Ensures persistent storage of contacts in JSON format.
+ * - Implements validation to prevent incorrect data entry.
+ * - Uses a separate `func.js` module for better code organization.
+ *
+ * Created by: Kunto Geeksfarm
+ */
+
 // Import necessary modules: func for local modul functions, and validator for validation checks
 const func = require("./src/func"); // Import the functions from the 'func.js' file
 const validator = require("validator"); // 'validator' helps with validating input like email and phone number formats

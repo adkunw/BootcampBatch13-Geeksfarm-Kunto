@@ -1,3 +1,22 @@
+/**
+ * ==========================================
+ * Collecting User Input Using Readline Module
+ * ==========================================
+ *
+ * This script demonstrates how to use the built-in 'readline' module in Node.js
+ * to interact with users via the command line. The script will:
+ *
+ * 1. Import the 'fs' module (not used in this example but can be extended to save input).
+ * 2. Import and configure the 'readline' module to read user input.
+ * 3. Prompt the user for their name, phone number, and email.
+ * 4. Display the collected user input in the console.
+ * 5. Close the readline interface to end the process.
+ *
+ * The program will ask each question sequentially before displaying the final details.
+ *
+ * Created by: Kunto Geeksfarm
+ */
+
 // Import the 'fs' module, which provides an API for interacting with the file system
 const fs = require("fs");
 
