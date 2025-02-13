@@ -1,0 +1,28 @@
+<%- include('layout/header') %>
+<%- include('layout/nav') %>
+
+    <div class="container text-center mt-5">
+      <h1 class="display-4">This is Contact Page, broww</h1>
+
+      <% if (cont.length < 1) { %>
+      <p>Contact data is empty</p>
+      <% } else {%>
+      <table class="table table-striped mt-4">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% cont.forEach(contact => { %>
+          <tr>
+            <td><%= contact.nama %></td>
+            <td><%= contact.email %></td>
+          </tr>
+          <% }) }%>
+        </tbody>
+      </table>
+    </div>
+
+    <%- include('layout/footer') %>

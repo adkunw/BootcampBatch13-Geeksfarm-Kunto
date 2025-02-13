@@ -61,15 +61,21 @@ const question = async (question) => {
   });
 };
 
+// Fungsi untuk menambahkan data baru ke daftar kontak
+const addData = (data) => {
+  if (isNameExists(data.name)) {
+    console.log(`Error: Contact with name "${data.name}" already exists.`);
+    return;
+  }
+  const contacts = readData(); // Ambil daftar kontak yang ada
+  contacts.push(data); // Tambahkan data baru ke dalam array
+  saveData(contacts); // Simpan kembali ke file JSON
+  console.log("Contact added successfully.");
+};
+
 // Function to save the contact data to the JSON file
-const saveData = (data) => {
+const saveData = (contacts) => {
   try {
-    // Read the contents of the file (contacts.json)
-    const file = fs.readFileSync(dataPath, "utf-8");
-    // Parse the file content (JSON) into a JavaScript array or object
-    const contacts = JSON.parse(file);
-    // Add the new contact data (name, phone, email) to the contacts array
-    contacts.push(data);
     // Write the updated array back to the file in JSON format
     fs.writeFileSync(dataPath, JSON.stringify(contacts));
 
@@ -81,8 +87,113 @@ const saveData = (data) => {
   }
 };
 
+// Fungsi untuk mengecek apakah nama sudah ada dalam daftar kontak (case insensitive)
+const isNameExists = (name) => {
+  const contacts = readData();
+  return contacts.some(
+    (contact) => contact.name.toLowerCase() === name.toLowerCase()
+  );
+};
+
+//function to read data from contacts.json
+const readData = () => {
+  try {
+    // Read the contents of the file (contacts.json)
+    const file = fs.readFileSync(dataPath, "utf-8");
+    // Parse the file content (JSON) into a JavaScript array or object
+    const contacts = JSON.parse(file);
+    //return the contacts array
+    return contacts;
+  } catch (error) {
+    // If there is any error during reading the file, show an error message
+    console.error("Error reading data:", error.message);
+    return [];
+  }
+};
+
+// Fungsi untuk membaca data berdasarkan nama
+function readDataDetail(name) {
+  // Mendapatkan data kontak
+  const contacts = readData();
+
+  // Mengubah nama pencarian menjadi lowercase
+
+  const nameLower = name.toLowerCase();
+
+  // Mencari kontak yang namanya cocok, tanpa memperhatikan kapitalisasi
+  const filteredContacts = contacts.filter(
+    (contact) => contact.name && contact.name.toLowerCase().includes(nameLower)
+  );
+
+  return filteredContacts;
+}
+
+// Fungsi untuk menghapus data berdasarkan nama
+function deleteData(name) {
+  // Membaca data kontak yang ada
+  let contacts = readData();
+
+  // Mengubah nama pencarian menjadi lowercase
+  const nameLower = name.toLowerCase();
+
+  // Menghapus kontak yang memiliki nama yang cocok (case-insensitive)
+  const updatedContacts = contacts.filter(
+    (contact) => contact.name.toLowerCase() !== nameLower
+  );
+
+  // Mengecek apakah ada perubahan pada data
+  if (updatedContacts.length === contacts.length) {
+    console.log(`No contact found with name: ${name}`);
+  } else {
+    // Menyimpan data yang sudah terupdate ke file
+    saveData(updatedContacts);
+    console.log(`Contact with name "${name}" has been deleted.`);
+  }
+}
+
+// Fungsi untuk memperbarui data kontak
+function updateData(oldName, name, phone, email) {
+  let contacts = readData();
+  const oldNameLower = oldName.toLowerCase();
+
+  // Cari indeks kontak yang cocok
+  const contactIndex = contacts.findIndex(
+    (contact) => contact.name && contact.name.toLowerCase() === oldNameLower
+  );
+
+  if (contactIndex === -1) {
+    console.log(`Contact with name "${oldName}" not found.`);
+    return;
+  }
+
+  if (isNameExists(name)) {
+    console.log(`Error: Contact with name "${name}" already exists.`);
+    return;
+  }
+
+  // Perbarui informasi kontak yang ditemukan
+  contacts[contactIndex] = {
+    name: name || contacts[contactIndex].name,
+    phone: phone || contacts[contactIndex].phone,
+    email: email || contacts[contactIndex].email,
+  };
+
+  // Simpan kembali data yang diperbarui
+  saveData(contacts);
+  console.log(`Contact "${oldName}" has been updated successfully.`);
+}
+
 const closeRL = () => {
   rl.close();
 };
 
-module.exports = { question, saveData, closeRL }; // Export the 'question' and 'saveData' functions for use in other files
+module.exports = {
+  question,
+  addData,
+  saveData,
+  readData,
+  readDataDetail,
+  deleteData,
+  updateData,
+  closeRL,
+}; // Export the 'question' and 'saveData' functions for use in other files

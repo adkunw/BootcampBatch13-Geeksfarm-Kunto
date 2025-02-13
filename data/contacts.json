@@ -1,12 +1,32 @@
 [
     {
-        "name": "kunto",
-        "phone": "08123123123",
-        "email": "qwe@asd.com"
+        "name": "Budi",
+        "phone": "0812345671",
+        "email": "budi@example.com"
+    },
+    {
+        "name": "Siti",
+        "phone": "0812345672",
+        "email": "siti@example.com"
+    },
+    {
+        "name": "Andi",
+        "phone": "0812345673",
+        "email": "andi@example.com"
+    },
+    {
+        "name": "Rina",
+        "phone": "0812345674",
+        "email": "rina@example.com"
+    },
+    {
+        "name": "Aditya",
+        "phone": "081234567890",
+        "email": "aditya@example.com"
     },
     {
         "name": "Kunto",
-        "phone": "08123123123",
-        "email": "asd@qwe.com"
+        "phone": "081234567890",
+        "email": "aditya@example.com"
     }
 ]

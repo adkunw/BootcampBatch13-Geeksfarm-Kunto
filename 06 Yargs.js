@@ -27,7 +27,7 @@ yargs.command({
       phone: argv.phone,
       email: argv.email,
     };
-    fs.addData(contact);
+    fs.saveData(contact);
   },
 });
 
@@ -98,36 +98,6 @@ yargs.command({
   handler(argv) {
     const nameToDelete = argv.name;
     fs.deleteData(nameToDelete); // Memanggil fungsi deleteData untuk menghapus kontak
-  },
-});
-
-yargs.command({
-  command: "update",
-  describe: "update existing contact",
-  builder: {
-    oldName: {
-      describe: "old contact name",
-      demandOption: true,
-      type: "string",
-    },
-    name: {
-      describe: "new contact name",
-      demandOption: false,
-      type: "string",
-    },
-    phone: {
-      describe: "new contact phone",
-      demandOption: false,
-      type: "string",
-    },
-    email: {
-      describe: "new contact email",
-      demandOption: false,
-      type: "string",
-    },
-  },
-  handler(argv) {
-    fs.updateData(argv.oldName, argv.name, argv.phone, argv.email);
   },
 });
 
